@@ -34,9 +34,14 @@ if __name__ == "__main__":
                         help='''How much information do you want to see at the command line?
                         You can add several of these e.g., -vv is DEBUG''', default=2)
 
+    print(can.rc)
+    # parser.add_argument('-c', '--channel', help='''Most backend interfaces require some sort of channel.
+    # For example with the serial interface the channel might be a rfcomm device: /dev/rfcomm0
+    # Other channel examples are: can0, vcan0''', default=can.rc['channel'])
+
     parser.add_argument('-c', '--channel', help='''Most backend interfaces require some sort of channel.
     For example with the serial interface the channel might be a rfcomm device: /dev/rfcomm0
-    Other channel examples are: can0, vcan0''', default=can.rc['channel'])
+    Other channel examples are: can0, vcan0''', default='can0')
 
     parser.add_argument('-i', '--interface', dest="interface", help='''Which backend do you want to use?''',
                         default='kvaser', choices=('kvaser', 'socketcan', 'socketcan_ctypes',
