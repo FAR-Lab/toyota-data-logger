@@ -2,6 +2,8 @@ import serial
 import time
 import sys, traceback
 
+port = "/dev/ttyUSB0"  # Raspberry Pi 2
+
 def main():
     try:
         participant = sys.argv[1]
@@ -12,7 +14,9 @@ def main():
 
         # setup the USB GPS serial port
         ser = serial.Serial()
-        ser.port = '/dev/cu.usbserial'
+        print(ser)
+        # ser.port = '/dev/cu.usbserial'
+        ser.portal = port
         ser.baudrate = 4800
         ser.timeout = 1
         ser.open()

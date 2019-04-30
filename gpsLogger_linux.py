@@ -16,13 +16,15 @@ while True:
         report = session.next()
         # Wait for a 'TPV' report and display the current time
         # To see all report data, uncomment the line below
-        # print(report)
+        
         if report['class'] == 'TPV':
             if hasattr(report, 'time'):
                 # print(report)
                 # <dictwrapper: {'class': 'TPV', 'device': '/dev/ttyUSB0', 'mode': 3, 'time': '2019-03-15T20:02:44.000Z', 'ept': 0.005, 'lat': 40.75534, 'lon': -73.955945, 'alt': 28.5, 'track': 15.87, 'speed': 0.051, 'climb': 0.0}>
+                temp = str(report.time) + ',' + str(report.lon) +',' + str(report.lat)
+                
 
-                f.write(str(report.time) + ',' + str(report.lon) +',' + str(report.lat))
+                f.write(temp + '\n')
     except KeyError:
         pass
     except KeyboardInterrupt:
